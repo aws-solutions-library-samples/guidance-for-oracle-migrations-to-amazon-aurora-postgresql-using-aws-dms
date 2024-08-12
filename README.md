@@ -1,4 +1,4 @@
-# Guidance for Large Data Migrations from Oracle to Amazon RDS for PostgreSQL
+# Guidance for Large Data Migrations from Oracle to Amazon Aurora PostgreSQL
 
 The Guidance title should be consistent with the title established first in Alchemy.
 
