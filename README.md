@@ -64,7 +64,7 @@ This deployment requires that you have access to the following AWS services:
 - Amazon EC2
 - Amazon S3
 - Amazon VPC
-- AWS IAM role 
+- AWS IAM  
 - AWS Cloudformation
 
 ### Supported Regions 
@@ -78,12 +78,16 @@ This guidance is supported in all AWS Regions
  
 **Example:**
 
-1. Clone the repo using command ```git clone xxxxxxxxxx```
-2. cd to the repo folder ```cd <repo-name>```
-3. Install packages in requirements using command ```pip install requirement.txt```
-4. Edit content of **file-name** and replace **s3-bucket** with the bucket name in your account.
-5. Run this command to deploy the stack ```cdk deploy``` 
-6. Capture the domain name created by running this CLI command ```aws apigateway ............```
+1. Clone the repo using command
+```
+git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
+
+```
+3. cd to the repo folder ```cd <repo-name>```
+4. Install packages in requirements using command ```pip install requirement.txt```
+5. Edit content of **file-name** and replace **s3-bucket** with the bucket name in your account.
+6. Run this command to deploy the stack ```cdk deploy``` 
+7. Capture the domain name created by running this CLI command ```aws apigateway ............```
 
 
 
