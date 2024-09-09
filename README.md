@@ -1,4 +1,6 @@
-# Guidance for Large Data Migrations from Oracle to Amazon Aurora PostgreSQL
+# Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS 
+<img width="664" alt="image" src="https://github.com/user-attachments/assets/e08bbdd9-6436-4743-aa30-b4467fc192b6">
+
 
 The Guidance title should be consistent with the title established first in Alchemy.
 
