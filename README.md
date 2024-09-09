@@ -49,11 +49,11 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 ## Prerequisites 
 
--Access to deploy Cloudformation template and create resources (Amazon EC2, Aurora PostgreSQL, RDS Oracle, VPC, Subnets, Security groups, IAM roles and Policies)
+- Access to deploy Cloudformation template and create resources (Amazon EC2, Aurora PostgreSQL, RDS Oracle, VPC, Subnets, Security groups, IAM roles and Policies)
 
 ### Operating System (required)
 
-These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** which is deployed for you on the bastion host.
+- These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** which is deployed for you on the bastion host.
 
 
 ### AWS account requirements (If applicable)
@@ -67,19 +67,9 @@ This deployment requires that you have access to the following AWS services:
 - AWS IAM role 
 - AWS Cloudformation
 
-### aws cdk bootstrap (if sample code has aws-cdk)
-
-<If using aws-cdk, include steps for account bootstrap for new cdk users.>
-
-**Example blurb:** “This Guidance uses aws-cdk. If you are using aws-cdk for first time, please perform the below bootstrapping....”
-
-### Service limits  (if applicable)
-
-<Talk about any critical service limits that affect the regular functioning of the Guidance. If the Guidance requires service limit increase, include the service name, limit name and link to the service quotas page.>
-
 ### Supported Regions (if applicable)
 
-<If the Guidance is built for specific AWS Regions, or if the services used in the Guidance do not support all Regions, please specify the Region this Guidance is best suited for>
+This guidance is supported in all AWS Regions
 
 
 ## Deployment Steps (required)
