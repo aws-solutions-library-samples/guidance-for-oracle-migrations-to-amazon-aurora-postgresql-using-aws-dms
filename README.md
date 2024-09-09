@@ -82,7 +82,7 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
 2. cd to the repo folder ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
 4. Deploy the Cloudformation template
 ```
-aws cloudformation deploy --template-file dmsoracletoapgv9.yml --stack-name dms-solution-stack --parameter-overrides KeyName= --tags purpose=msk-keyspaces-creation --s3-bucket msk-ks-cass-$AWS_ACCOUNT_ID  --capabilities CAPABILITY_NAMED_IAM
+aws cloudformation deploy --template-file dmsoracletoapgv9.yml --stack-name dms-solution-stack
 ```
 
 
