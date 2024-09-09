@@ -53,7 +53,7 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 ### Operating System 
 
-- These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** which is deployed for you on the bastion host.
+- These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** but might work on any linux or Mac environment with little modification.
 
 
 ### AWS account requirements 
@@ -74,21 +74,16 @@ This guidance is supported in all AWS Regions
 
 ## Deployment Steps
 
-
- 
-**Example:**
-
 1. Clone the repo using command
 ```
 git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
 
 ```
-3. cd to the repo folder ```cd <repo-name>```
-4. Install packages in requirements using command ```pip install requirement.txt```
-5. Edit content of **file-name** and replace **s3-bucket** with the bucket name in your account.
-6. Run this command to deploy the stack ```cdk deploy``` 
-7. Capture the domain name created by running this CLI command ```aws apigateway ............```
-
+2. cd to the repo folder ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
+4. Deploy the Cloudformation template
+```
+aws cloudformation deploy --template-file dmsoracletoapgv9.yml --stack-name dms-solution-stack --parameter-overrides KeyName= --tags purpose=msk-keyspaces-creation --s3-bucket msk-ks-cass-$AWS_ACCOUNT_ID  --capabilities CAPABILITY_NAMED_IAM
+```
 
 
 ## Deployment Validation  (required)
