@@ -38,7 +38,7 @@ The cloudformation template takes inputs on the size of instances used, so this 
 
 We recommend creating a Budget through AWS Cost Explorer to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
-The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US East (N. Virginia) Region for one month.
+The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US-West-2 (Oregon) Region for one month.
 
 | AWS service  | Dimensions | Monthly Cost [USD] |
 | ----------- | ------------ | ------------ |
