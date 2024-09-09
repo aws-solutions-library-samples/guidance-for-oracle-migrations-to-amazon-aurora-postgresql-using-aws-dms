@@ -47,38 +47,25 @@ The following table provides a sample cost breakdown for deploying this Guidance
 | DMS Replication Instance | 16.xl and 500 GB Storage | 5,326.11 | 
 | Amazon EC2 | m5.4xl | 523.97 | 
 
-## Prerequisites (required)
+## Prerequisites 
+
+-Access to deploy Cloudformation template and create resources (Amazon EC2, Aurora PostgreSQL, RDS Oracle, VPC, Subnets, Security groups, IAM roles and Policies)
 
 ### Operating System (required)
 
-- Talk about the base Operating System (OS) and environment that can be used to run or deploy this Guidance, such as *Mac, Linux, or Windows*. Include all installable packages or modules required for the deployment. 
-- By default, assume Amazon Linux 2/Amazon Linux 2023 AMI as the base environment. All packages that are not available by default in AMI must be listed out.  Include the specific version number of the package or module.
-
-**Example:**
-“These deployment instructions are optimized to best work on **<Amazon Linux 2 AMI>**.  Deployment in another OS may require additional steps.”
-
-- Include install commands for packages, if applicable.
-
-
-### Third-party tools (If applicable)
-
-*List any installable third-party tools required for deployment.*
+These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** which is deployed for you on the bastion host.
 
 
 ### AWS account requirements (If applicable)
 
-*List out pre-requisites required on the AWS account if applicable, this includes enabling AWS regions, requiring ACM certificate.*
+This deployment requires that you have access to the following AWS services:
 
-**Example:** “This deployment requires you have public ACM certificate available in your AWS account”
-
-**Example resources:**
-- ACM certificate 
-- DNS record
-- S3 bucket
-- VPC
-- IAM role with specific permissions
-- Enabling a Region or service etc.
-
+- Amazon RDS
+- Amazon EC2
+- Amazon S3
+- Amazon VPC
+- AWS IAM role 
+- AWS Cloudformation
 
 ### aws cdk bootstrap (if sample code has aws-cdk)
 
