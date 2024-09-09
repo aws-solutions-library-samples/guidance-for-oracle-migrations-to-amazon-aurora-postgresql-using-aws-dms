@@ -80,22 +80,18 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
 
 ```
 2. cd to the repo folder ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
-4. Deploy the Cloudformation template
+3. Deploy the Cloudformation template
 ```
 aws cloudformation deploy --template-file dmsoracletoapgv9.yml --stack-name dms-solution-stack
 ```
+4. 
 
 
 ## Deployment Validation  (required)
 
-<Provide steps to validate a successful deployment, such as terminal output, verifying that the resource is created, status of the CloudFormation template, etc.>
+Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
+* If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in the RDS console.
 
-
-**Examples:**
-
-* Open CloudFormation console and verify the status of the template with the name starting with xxxxxx.
-* If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in        the RDS console.
-*  Run the following CLI command to validate the deployment: ```aws cloudformation describe xxxxxxxxxxxxx```
 
 
 
