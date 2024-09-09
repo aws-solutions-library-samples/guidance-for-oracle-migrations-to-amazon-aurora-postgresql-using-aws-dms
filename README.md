@@ -1,6 +1,6 @@
 # Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS 
 
-## Table of Contents (required)
+## Table of Contents
 
 List the top-level sections of the README template, along with a hyperlink to the specific section.
 
@@ -23,10 +23,8 @@ List the top-level sections of the README template, along with a hyperlink to th
 
 ## Overview (required)
 
-1. Provide a brief overview explaining the what, why, or how of your Guidance. You can answer any one of the following to help you write this:
+1. This guidance demonstrates how to efficiently migrate very large tables from Oracle to Amazon Aurora PostgreSQL. The guidance leverages multiple DMS tasks that have been preconfigured for high performance for both the full load and CDC stages of the migration. Users can further tune DMS parameters for their particular workload, but this provides a very good starting point for large databases. Included sample code contains a Cloudformation template that builds out the entire environment, including the Oracle database, DMS Infrastructure, DMS tasks, and Aurora PostgreSQL database.
 
-    - **Why did you build this Guidance?**
-    - **What problem does this Guidance solve?**
 
 2. Include the architecture diagram image, as well as the steps explaining the high-level overview and flow of the architecture. 
     - To add a screenshot, create an ‘assets/images’ folder in your repository and upload your screenshot to it. Then, using the relative file path, add it to your README. 
