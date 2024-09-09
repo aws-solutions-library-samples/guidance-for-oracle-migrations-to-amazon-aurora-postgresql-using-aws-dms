@@ -51,12 +51,12 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 - Access to deploy Cloudformation template and create resources (Amazon EC2, Aurora PostgreSQL, RDS Oracle, VPC, Subnets, Security groups, IAM roles and Policies)
 
-### Operating System (required)
+### Operating System 
 
 - These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** which is deployed for you on the bastion host.
 
 
-### AWS account requirements (If applicable)
+### AWS account requirements 
 
 This deployment requires that you have access to the following AWS services:
 
@@ -67,20 +67,13 @@ This deployment requires that you have access to the following AWS services:
 - AWS IAM role 
 - AWS Cloudformation
 
-### Supported Regions (if applicable)
+### Supported Regions 
 
 This guidance is supported in all AWS Regions
 
 
-## Deployment Steps (required)
+## Deployment Steps
 
-Deployment steps must be numbered, comprehensive, and usable to customers at any level of AWS expertise. The steps must include the precise commands to run, and describe the action it performs.
-
-* All steps must be numbered.
-* If the step requires manual actions from the AWS console, include a screenshot if possible.
-* The steps must start with the following command to clone the repo. ```git clone xxxxxxx```
-* If applicable, provide instructions to create the Python virtual environment, and installing the packages using ```requirement.txt```.
-* If applicable, provide instructions to capture the deployed resource ARN or ID using the CLI command (recommended), or console action.
 
  
 **Example:**
@@ -117,7 +110,6 @@ This section should include:
 * Commands to run
 * Expected output (provide screenshot if possible)
 * Output description
-
 
 
 ## Next Steps (required)
