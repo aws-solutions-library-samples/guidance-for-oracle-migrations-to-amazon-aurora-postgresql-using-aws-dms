@@ -81,10 +81,18 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
 ```
 2. cd to the repo folder ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
 3. Deploy the Cloudformation template
-```
-aws cloudformation deploy --template-file dmsoracletoapgv9.yml --stack-name dms-solution-stack
-```
-4. 
+
+    Using the AWS Management Console
+
+    For this guidance, we will be using the us-west-2 region.
+    Sign in to the AWS CloudFormation console
+    Create Stack > Upload the oracletoaurorapgv*.yml file
+    Deploy the stack after entering dms-solution in the stack name
+        The parameters can be changed as desired but the solution has been tested and verified with the defaults.
+4. Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
+   You should also see an Oracle and Aurora PostgreSQL database under the RDS section of the management console.
+
+   ![Validation Example](./assets/images/validation.png)
 
 
 ## Deployment Validation  (required)
