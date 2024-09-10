@@ -74,13 +74,8 @@ This guidance is supported in all AWS Regions
 
 ## Deployment Steps
 
-1. Clone the repo using command
-```
-git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
 
-```
-2. cd to the repo folder ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
-3. Deploy the Cloudformation template
+1. Deploy the Cloudformation template
 
     Using the AWS Management Console
 
@@ -89,30 +84,33 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
     Create Stack > Upload the oracletoaurorapgv*.yml file
     Deploy the stack after entering dms-solution in the stack name
         The parameters can be changed as desired but the solution has been tested and verified with the defaults.
-4. Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
+2. Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
    You should also see an Oracle and Aurora PostgreSQL database under the RDS section of the management console.
 
    ![Validation Example](./assets/images/validation.png)
 
 
-## Deployment Validation  (required)
-
-Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
-* If deployment is successful, you should see an active database instance with the name starting with <xxxxx> in the RDS console.
-
-
-
-
 ## Running the Guidance (required)
 
-<Provide instructions to run the Guidance with the sample data or input provided, and interpret the output received.> 
+1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
+2. sudo su - ec2-user
+3. sudo dnf install git -y
+4. Clone the repo using command (this may take a while)
+```
+git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
 
-This section should include:
+```
+5. cd /home/ec2-user
+6. wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
+7. sudo yum install unzip
+8. unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
+9. export PATH=$PATH:/home/ec2-user/instantclient_21_15/
+10. cd to the repo folder
+ ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
+11. load the data (this will take ~6 hours with the defaults and loads 1TB of data)
+```impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample```
+12. 
 
-* Guidance inputs
-* Commands to run
-* Expected output (provide screenshot if possible)
-* Output description
 
 
 ## Next Steps (required)
