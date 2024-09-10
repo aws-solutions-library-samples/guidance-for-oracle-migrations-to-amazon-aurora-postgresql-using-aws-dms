@@ -93,14 +93,10 @@ This guidance is supported in all AWS Regions
 ## Running the Guidance (required)
 
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
-2.
-   ```
-  sudo su - ec2-user
-   ```
-4.
-   ```
-  sudo dnf install git -y
-   ```
+2. Switch user
+   ```sudo su - ec2-user```
+4. Install git
+   ```sudo dnf install git -y```
 6. Clone the repo using command (this may take a while)
 ```
 git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
