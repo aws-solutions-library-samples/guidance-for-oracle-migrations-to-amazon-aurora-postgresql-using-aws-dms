@@ -93,24 +93,32 @@ This guidance is supported in all AWS Regions
 ## Running the Guidance (required)
 
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
-2. ```sudo su - ec2-user```
-3. ```sudo dnf install git -y```
-4. Clone the repo using command (this may take a while)
+2.
+   ```
+  sudo su - ec2-user
+   ```
+4.
+   ```
+  sudo dnf install git -y
+   ```
+6. Clone the repo using command (this may take a while)
 ```
 git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
 
 ```
-5. cd /home/ec2-user
-6. wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
-7. sudo yum install unzip
+5. ```cd /home/ec2-user```
+6. Download Oracle tools software
+   ```wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip```
 8.
+   ```sudo yum install unzip```
+10.
    ```unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip```
-9. ```export PATH=$PATH:/home/ec2-user/instantclient_21_15/```
-10. cd to the repo folder
+11. ```export PATH=$PATH:/home/ec2-user/instantclient_21_15/```
+12. cd to the repo folder
  ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
-11. load the data (this will take ~6 hours with the defaults and loads 1TB of data)
+13. load the data (this will take ~6 hours with the defaults and loads 1TB of data)
 ```impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample```
-12. 
+14. 
 
 
 
