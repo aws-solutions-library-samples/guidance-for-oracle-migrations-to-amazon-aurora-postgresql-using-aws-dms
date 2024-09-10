@@ -94,27 +94,47 @@ This guidance is supported in all AWS Regions
 
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
 2. Switch user
-   ```sudo su - ec2-user```
-4. Install git
-   ```sudo dnf install git -y```
-6. Clone the repo using command (this may take a while)
+```
+sudo su - ec2-user
+```
+3. Install git
+```
+sudo dnf install git -y
+```
+4. Clone the repo using command (this may take a while)
 ```
 git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
 
 ```
-5. ```cd /home/ec2-user```
+5. Change Directory
+```
+cd /home/ec2-user
+```
 6. Download Oracle tools software
-   ```wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip```
-8.
-   ```sudo yum install unzip```
-10.
-   ```unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip```
-11. ```export PATH=$PATH:/home/ec2-user/instantclient_21_15/```
-12. cd to the repo folder
- ```cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql```
-13. load the data (this will take ~6 hours with the defaults and loads 1TB of data)
-```impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample```
-14. 
+```
+wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
+```
+7. Install unzip
+```
+sudo yum install unzip
+```
+8. Unzip software
+```
+unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
+```
+9. Add instant client to the PATH environmment variable
+```
+export PATH=$PATH:/home/ec2-user/instantclient_21_15/
+```
+10. cd to the repo folder
+```
+cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
+```
+11. load the data (this will take ~6 hours with the defaults and loads 1TB of data)
+```
+impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample
+```
+12. 
 
 
 
