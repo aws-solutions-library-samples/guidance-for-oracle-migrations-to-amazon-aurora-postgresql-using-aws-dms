@@ -145,7 +145,11 @@ unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
 export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```
-10. Download the dump file to the RDS instance from S3
+10. Connect to Oracle Download the dump file to the RDS instance from S3, and create the necessary tablespace
+
+```
+sh oracle_connect.sh
+```
 
 ```
 SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
@@ -155,22 +159,11 @@ p_s3_prefix => '/'
 AS TASK_ID FROM DUAL;
 ```
 
-11. Create the tablespace to be used
-
-```
-sh oracle_connect.sh
-```
-
 ```
 @create_ts.sql
-
 ```
 
-```
-quit
-```
-
-13. Load the data (this will take ~6 hours with the defaults and loads ~1TB of data with the largest table having around ~700M records)
+11. Load the data (this will take ~6 hours with the defaults and loads ~1TB of data with the largest table having around ~700M records)
 
 ```
 impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=DMS_SAMPLE
@@ -195,39 +188,14 @@ Delete the Cloudformation stack will remove all resources.
 
 **Known issues (optional)**
 
-<If there are common known issues, or errors that can occur during the Guidance deployment, describe the issue and resolution steps here>
+Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cause the task to fail. 
 
 
-**Additional considerations (if applicable)**
+## Notices
 
-<Include considerations the customer must know while using the Guidance, such as anti-patterns, or billing considerations.>
-
-**Examples:**
-
-- “This Guidance creates a public AWS bucket required for the use-case.”
-- “This Guidance created an Amazon SageMaker notebook that is billed per hour irrespective of usage.”
-- “This Guidance creates unauthenticated public API endpoints.”
-
-
-Provide a link to the *GitHub issues page* for users to provide feedback.
-
-
-**Example:** *“For any feedback, questions, or suggestions, please use the issues tab under this repo.”*
-
-## Revisions (optional)
-
-Document all notable changes to this project.
-
-Consider formatting this section based on Keep a Changelog, and adhering to Semantic Versioning.
-
-## Notices (optional)
-
-Include a legal disclaimer
-
-**Example:**
 *Customers are responsible for making their own independent assessment of the information in this Guidance. This Guidance: (a) is for informational purposes only, (b) represents AWS current product offerings and practices, which are subject to change without notice, and (c) does not create any commitments or assurances from AWS and its affiliates, suppliers or licensors. AWS products or services are provided “as is” without warranties, representations, or conditions of any kind, whether express or implied. AWS responsibilities and liabilities to its customers are controlled by AWS agreements, and this Guidance is not part of, nor does it modify, any agreement between AWS and its customers.*
 
 
-## Authors (optional)
+## Authors 
 
 Name of code contributors
