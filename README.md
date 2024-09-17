@@ -136,12 +136,17 @@ AS TASK_ID FROM DUAL;
 ```
 11. Create the tablespace to be used
 ``` cd /home/dms```
+
 ``` sh oracle_connect.sh```
+
 ```@create_ts.sql```
+
 13. Load the data (this will take ~6 hours with the defaults and loads 1TB of data)
+
 ```
 impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample
 ```
+
 12. 
 
 
