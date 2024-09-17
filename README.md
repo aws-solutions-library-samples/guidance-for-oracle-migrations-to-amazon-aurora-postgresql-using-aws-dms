@@ -135,11 +135,20 @@ p_s3_prefix => '/'
 AS TASK_ID FROM DUAL;
 ```
 11. Create the tablespace to be used
-``` cd /home/dms```
 
-``` sh oracle_connect.sh```
+```
+cd /home/dms
+```
 
-```@create_ts.sql```
+```
+sh oracle_connect.sh
+```
+
+```
+@create_ts.sql
+
+```quit```
+```
 
 13. Load the data (this will take ~6 hours with the defaults and loads 1TB of data)
 
