@@ -153,7 +153,7 @@ sh oracle_connect.sh
 
 ```
 SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
-p_bucket_name    =>  '<your-bucket-dms-solution',
+p_bucket_name    =>  '<rsshevc-dms-solution',
 p_directory_name =>  'DATA_PUMP_DIR'),
 p_s3_prefix => '/'
 AS TASK_ID FROM DUAL;
