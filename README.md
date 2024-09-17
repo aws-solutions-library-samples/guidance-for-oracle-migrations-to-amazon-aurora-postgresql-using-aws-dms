@@ -126,11 +126,19 @@ unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
 export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```
-10. cd to the repo folder
+10. Download the dump file to the RDS instance from S3
 ```
-cd guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
+SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
+p_bucket_name    =>  '<your-bucket-dms-solution',
+p_directory_name =>  'DATA_PUMP_DIR'),
+p_s3_prefix => '/'
+AS TASK_ID FROM DUAL;
 ```
-11. load the data (this will take ~6 hours with the defaults and loads 1TB of data)
+11. Create the tablespace to be used
+``` cd /home/dms```
+``` sh oracle_connect.sh```
+```@create_ts.sql```
+13. Load the data (this will take ~6 hours with the defaults and loads 1TB of data)
 ```
 impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample
 ```
