@@ -100,26 +100,53 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
    
 2. Change Directory
+
 ```
 cd /home/dms
 ```
+
+3. Configure the environment
+
+```
+sh export_variables.sh
+```
+
+4. Source environment variables
+
+```
+source ~/.bashrc
+```
+
+5. Configure Source DB
+
+```
+sh oracle_prerequisites_dms.sh
+```
+
 6. Download Oracle tools software
+   
 ```
 wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
+
 7. Install unzip
+
 ```
 sudo yum install unzip
 ```
+
 8. Unzip software
+
 ```
 unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
+
 9. Add instant client to the PATH environmment variable
 ```
 export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```
 10. Download the dump file to the RDS instance from S3
+
 ```
 SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
 p_bucket_name    =>  '<your-bucket-dms-solution',
@@ -127,11 +154,8 @@ p_directory_name =>  'DATA_PUMP_DIR'),
 p_s3_prefix => '/'
 AS TASK_ID FROM DUAL;
 ```
-11. Create the tablespace to be used
 
-```
-cd /home/dms
-```
+11. Create the tablespace to be used
 
 ```
 sh oracle_connect.sh
@@ -149,7 +173,7 @@ quit
 13. Load the data (this will take ~6 hours with the defaults and loads ~1TB of data with the largest table having around ~700M records)
 
 ```
-impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample
+impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=DMS_SAMPLE
 ```
 
 12. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
