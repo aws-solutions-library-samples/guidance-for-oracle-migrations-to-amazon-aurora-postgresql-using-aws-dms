@@ -93,6 +93,7 @@ This guidance is supported in all AWS Regions
 ## Running the Guidance (required)
 
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
+   
 2. Switch user
 ```
 sudo su - ec2-user
@@ -147,29 +148,30 @@ sh oracle_connect.sh
 ```
 @create_ts.sql
 
-```quit```
 ```
 
-13. Load the data (this will take ~6 hours with the defaults and loads 1TB of data)
+```
+quit
+```
+
+13. Load the data (this will take ~6 hours with the defaults and loads ~1TB of data with the largest table having around ~700M records)
 
 ```
 impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=dms_sample
 ```
 
-12. 
-
+12. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
+1/ not parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
 
 
 ## Next Steps (required)
 
-Provide suggestions and recommendations about how customers can modify the parameters and the components of the Guidance to further enhance it according to their requirements.
+In this guidance we have modified the maxFileSize and maxFullLoadSubTasks values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that volume. 
 
 
 ## Cleanup (required)
 
-- Include detailed instructions, commands, and console actions to delete the deployed Guidance.
-- If the Guidance requires manual deletion of resources, such as the content of an S3 bucket, please specify.
-
+Delete the Cloudformation stack will remove all resources. 
 
 
 ## FAQ, known issues, additional considerations, and limitations (optional)
