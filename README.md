@@ -75,7 +75,12 @@ This guidance is supported in all AWS Regions
 ## Deployment Steps
 
 
-1. Deploy the Cloudformation template
+1. Clone the repo using command
+```
+git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
+```
+
+2. Deploy the Cloudformation template
 
     Using the AWS Management Console
 
@@ -84,7 +89,7 @@ This guidance is supported in all AWS Regions
     Create Stack > Upload the oracletoaurorapgv*.yml file
     Deploy the stack after entering dms-solution in the stack name
         The parameters can be changed as desired but the solution has been tested and verified with the defaults.
-2. Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
+3. Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
    You should also see an Oracle and Aurora PostgreSQL database under the RDS section of the management console.
 
    ![Validation Example](./assets/images/validation.png)
@@ -94,22 +99,9 @@ This guidance is supported in all AWS Regions
 
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
    
-2. Switch user
+2. Change Directory
 ```
-sudo su - ec2-user
-```
-3. Install git
-```
-sudo dnf install git -y
-```
-4. Clone the repo using command (this may take a while)
-```
-git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
-
-```
-5. Change Directory
-```
-cd /home/ec2-user
+cd /home/dms
 ```
 6. Download Oracle tools software
 ```
