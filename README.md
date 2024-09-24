@@ -156,7 +156,8 @@ export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```
 11. Change directory into the repo
 
-```cd guidance*
+```
+cd guidance*
 ```
 
 12. Connect to Oracle. Run the procedure to build the Schema and procedures.
