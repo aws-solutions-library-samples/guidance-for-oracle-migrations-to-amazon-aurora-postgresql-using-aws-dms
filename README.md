@@ -176,7 +176,7 @@ sh oracle_connect.sh
 BEGIN
         master_load_all(
             p_num_records => 50000000,         -- Total number of records to load
-            p_commit_interval => 30000         -- Number of records after which to commit
+            p_commit_interval => 10000         -- Number of records after which to commit
         );
     END;
     /
