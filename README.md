@@ -181,12 +181,34 @@ BEGIN
     /
 ```
 
-14. You should now see significant load on the Oracle database (high CPU). The default settings will take a few hours to populate the tables.
+14. You should now see significant load on the Oracle database (high CPU). The default settings will take a few hours to populate the tables. When finished let's see how much data we loaded. You can rerun the procedure to get your desired size dataset.
 
-15. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
+```
+SELECT
+    TABLE_NAME,
+    ROUND(SUM(BYTES) / (1024 * 1024), 2) AS SIZE_MB
+FROM
+    (
+        SELECT
+            SEGMENT_NAME AS TABLE_NAME,
+            BYTES
+        FROM
+            DBA_SEGMENTS
+        WHERE
+            OWNER = 'DMS_SAMPLE'
+            AND SEGMENT_TYPE IN ('TABLE', 'TABLE PARTITION', 'TABLE SUBPARTITION')
+    )
+GROUP BY
+    TABLE_NAME
+ORDER BY
+    SIZE_MB DESC
+FETCH FIRST 30 ROWS ONLY;
+```
+
+16. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
 1/ non-parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
 
-16. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance.
+17. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance.
 
 
 ## Next Steps (required)
