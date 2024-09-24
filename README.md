@@ -87,9 +87,9 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
     For this guidance, we will be using the us-west-2 region.
     Sign in to the AWS CloudFormation console
     Create Stack > Upload the oracletoaurorapgv*.yml file
-    Deploy the stack after entering dms-solution in the stack name
+    Deploy the stack after entering dms-solution in the stack name. The solution has been tested with the default parameters, but you can scale the instances up/down as needed for your testing.
         The parameters can be changed as desired but the solution has been tested and verified with the defaults.
-3. Open CloudFormation console and verify the status of the template with the name starting with dms-solution-xxxxxx.
+3. Open CloudFormation console and verify the status of the template with the name starting with dms-solution*.
    You should also see an Oracle and Aurora PostgreSQL database under the RDS section of the management console.
 
    ![Validation Example](./assets/images/validation.png)
