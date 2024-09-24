@@ -2995,7 +2995,7 @@ CREATE OR REPLACE PROCEDURE master_parallel_load_multi_thread(
     v_start_time         TIMESTAMP := SYSTIMESTAMP;
     v_num_threads        NUMBER := 2;  -- Maximum of 2 threads per procedure
     v_records_per_thread NUMBER;
-    v_total_procedures   NUMBER := 3;  -- Number of different procedures
+    v_total_procedures   NUMBER := 4;  -- Number of different procedures
     v_proc_records       NUMBER;       -- Records each procedure will handle
 BEGIN
     -- Calculate the number of records each procedure will handle
