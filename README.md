@@ -159,7 +159,7 @@ export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```cd guidance*
 ```
 
-12. Connect to Oracle. Run the procedure to build the Schema and load the inital data set. 
+12. Connect to Oracle. Run the procedure to build the Schema and procedures.
 
 ```
 sh oracle_connect.sh
@@ -169,6 +169,17 @@ sh oracle_connect.sh
 @BuildAndLoadSchema.sql
 ```
 
+13. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load.
+
+```
+BEGIN
+        master_load_all(
+            p_num_records => 50000000,         -- Total number of records to load
+            p_commit_interval => 30000         -- Number of records after which to commit
+        );
+    END;
+    /
+```
 
 12. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
 1/ non-parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
