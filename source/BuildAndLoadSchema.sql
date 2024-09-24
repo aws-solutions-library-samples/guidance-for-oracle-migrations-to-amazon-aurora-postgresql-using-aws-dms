@@ -2993,7 +2993,7 @@ CREATE OR REPLACE PROCEDURE master_parallel_load_multi_thread(
 ) AS
     v_job_name           VARCHAR2(100);
     v_start_time         TIMESTAMP := SYSTIMESTAMP;
-    v_num_threads        NUMBER := 5;  -- Maximum of 5 threads per procedure
+    v_num_threads        NUMBER := 2;  -- Maximum of 2 threads per procedure
     v_records_per_thread NUMBER;
     v_total_procedures   NUMBER := 6;  -- Number of different procedures
     v_proc_records       NUMBER;       -- Records each procedure will handle
@@ -3103,7 +3103,7 @@ CREATE OR REPLACE PROCEDURE master_load_all(
     v_adjusted_employee_records NUMBER;
 BEGIN
     -- Calculate the adjusted number of records for the EMPLOYEE_NEW_DATA table
-    v_adjusted_employee_records := p_num_records * 4;
+    v_adjusted_employee_records := p_num_records * 10;
 
     -- Call the master procedure to load all other tables except EMPLOYEE_NEW_DATA
     master_parallel_load_multi_thread(
