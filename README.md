@@ -147,32 +147,19 @@ unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
 export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```
-10. Connect to Oracle Download the dump file to the RDS instance from S3, and create the necessary tablespace
+10. Connect to Oracle. Run the procedure to build the Schema and load the inital data set. 
 
 ```
 sh oracle_connect.sh
 ```
 
 ```
-SELECT rdsadmin.rdsadmin_s3_tasks.download_from_s3(
-p_bucket_name    =>  '<rsshevc-dms-solution',
-p_directory_name =>  'DATA_PUMP_DIR'),
-p_s3_prefix => '/'
-AS TASK_ID FROM DUAL;
+@BuildAndLoadSchema.sql
 ```
 
-```
-@create_ts.sql
-```
-
-11. Load the data (this will take ~6 hours with the defaults and loads ~1TB of data with the largest table having around ~700M records)
-
-```
-impdp ${SOURCEDBUSER}/${SOURCEDBPASSWORD}@${SOURCEDBHOST}:1521/dms dumpfile=dumpfilelargefile3.dmp SCHEMAS=DMS_SAMPLE
-```
 
 12. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
-1/ not parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
+1/ non-parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
 
 
 ## Next Steps (required)
