@@ -107,47 +107,59 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
 cd /home/dms
 ```
 
-3. Configure the environment
+3. Clone the repo to the bastion host. We are using a Bastion to increase security since the database resides in a private VPC.
+   
+```
+git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
+```
+
+
+4. Configure the environment
 
 ```
 sh export_variables.sh
 ```
 
-4. Source environment variables
+5. Source environment variables
 
 ```
 source ~/.bashrc
 ```
 
-5. Configure Source DB
+6. Configure Source DB
 
 ```
 sh oracle_prerequisites_dms.sh
 ```
 
-6. Download Oracle tools software
+7. Download Oracle tools software
    
 ```
 wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
 
-7. Install unzip
+8. Install unzip
 
 ```
 sudo yum install unzip
 ```
 
-8. Unzip software
+9. Unzip software
 
 ```
 unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
 ```
 
-9. Add instant client to the PATH environmment variable
+10. Add instant client to the PATH environmment variable
 ```
 export PATH=$PATH:/home/ec2-user/instantclient_21_15/
 ```
-10. Connect to Oracle. Run the procedure to build the Schema and load the inital data set. 
+11. Change directory into the repo
+
+```cd guidance*
+```
+
+12. Connect to Oracle. Run the procedure to build the Schema and load the inital data set. 
 
 ```
 sh oracle_connect.sh
@@ -161,8 +173,14 @@ sh oracle_connect.sh
 12. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
 1/ non-parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
 
+13. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance.
+
 
 ## Next Steps (required)
+
+14. Monitor the DMS task performance in the AWS CloudWatch Console.
+
+
 
 In this guidance we have modified the maxFileSize and maxFullLoadSubTasks values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that volume. 
 
