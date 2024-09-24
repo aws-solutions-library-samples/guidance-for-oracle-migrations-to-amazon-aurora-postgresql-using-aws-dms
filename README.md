@@ -181,10 +181,12 @@ BEGIN
     /
 ```
 
-12. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
+14. You should now see significant load on the Oracle database (high CPU). The default settings will take a few hours to populate the tables.
+
+15. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
 1/ non-parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
 
-13. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance.
+16. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance.
 
 
 ## Next Steps (required)
