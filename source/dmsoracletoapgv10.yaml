@@ -1755,7 +1755,7 @@ Resources:
                               "CreatePkAfterFullLoad": false,
                               "StopTaskCachedChangesApplied": false,
                               "StopTaskCachedChangesNotApplied": false,
-                              "MaxFullLoadSubTasks": 49,
+                              "MaxFullLoadSubTasks": 32,
                               "TransactionConsistencyTimeout": 600,
                               "CommitRate": 10000
                           },
