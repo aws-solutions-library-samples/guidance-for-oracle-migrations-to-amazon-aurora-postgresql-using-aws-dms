@@ -146,7 +146,7 @@ wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instan
 8. Install unzip
 
 ```
-sudo yum install unzip
+sudo yum install unzip -y
 ```
 
 9. Unzip software
