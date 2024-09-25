@@ -153,7 +153,7 @@ sh /home/dms/oracle_connect.sh
 
 ```
 BEGIN
-        master_load_all(
+        dms_sample.master_load_all(
             p_num_records => 50000000,         -- Total number of records to load
             p_commit_interval => 10000         -- Number of records after which to commit
         );
