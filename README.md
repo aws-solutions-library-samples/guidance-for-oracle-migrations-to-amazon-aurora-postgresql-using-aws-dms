@@ -44,7 +44,7 @@ The following table provides a sample cost breakdown for deploying this Guidance
 | ----------- | ------------ | ------------ |
 | Amazon RDS for Oracle | r6i.16xl and 5 TB Storage | $6,017.88 |
 | Amazon Aurora PostgreSQL | r6g.16xl and 5 TB Storage | $6,575.61 |
-| DMS Replication Instance | r6i.16xl and 1 TB Storage | 5,326.11 | 
+| DMS Replication Instance | r6i.16xl and 1 TB Storage | $5,326.11 | 
 | Amazon EC2 | m5.xl | 130.75 | 
 
 ## Prerequisites 
