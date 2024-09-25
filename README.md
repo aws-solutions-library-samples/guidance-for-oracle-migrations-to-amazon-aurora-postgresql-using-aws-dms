@@ -133,6 +133,10 @@ source ~/.bashrc
 sh oracle_prerequisites_dms.sh
 ```
 
+```
+quit
+```
+
 7. Download Oracle tools software
    
 ```
