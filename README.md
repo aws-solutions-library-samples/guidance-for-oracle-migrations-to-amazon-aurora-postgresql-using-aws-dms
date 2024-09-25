@@ -91,6 +91,7 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
    
     Deploy the stack after entering dms-solution in the stack name.
         The parameters can be changed as desired but the solution has been tested and verified with the defaults.
+   
 4. Open CloudFormation console and verify the status of the template with the name starting with dms-solution*.
    You should also see an Oracle and Aurora PostgreSQL database under the RDS section of the management console.
 
@@ -215,11 +216,11 @@ FETCH FIRST 30 ROWS ONLY;
 
 16. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios:
 | Task Name | Description |
-| ----------|-------------------------------------------|
-| dms-solution-v*-nonparallelloadtables | This task will large load tables when parallelism isn't possible due to lack of partitioning or column to act as a boundary range.
-| dms-solution-v*-parallel-load-partitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against partitioned source tables. 
-| dms-solution-v*-parallel-load-partitions-ranges | This task will load large tables leveraging boundary ranges when the table isn't partitioned.
-| dms-solution-v*-parallel-load-subpartitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against subpartitioned source tables. 
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| dms-solution-v*-nonparallelloadtables | This task will large load tables when parallelism isn't possible due to lack of partitioning or column to act as a boundary range. |
+| dms-solution-v*-parallel-load-partitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against partitioned source tables. |
+| dms-solution-v*-parallel-load-partitions-ranges | This task will load large tables leveraging boundary ranges when the table isn't partitioned. |
+| dms-solution-v*-parallel-load-subpartitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against subpartitioned source tables. |
 
 Run the task(s) of your choice and evaluate performance. In this guidance we have modified the **maxFileSize** and **maxFullLoadSubTasks** values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that EBS volume.
 
