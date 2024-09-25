@@ -1,4 +1,4 @@
-# Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS 
+≠# Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS 
 
 ## Table of Contents
 
@@ -34,7 +34,7 @@ You are responsible for the cost of the AWS services used while running this Gui
 
 As of 09/09/2024, the cost for running this guidance with the default settings in the US-West-2 (Oregon) is approximately $19,596.97 per month.
 
-The cloudformation template takes inputs on the size of instances used, so this can be scaled up or down as needed. It also does not need to be run for a full month to understand the guidance and apply it to your particular workload.
+The cloudformation template takes inputs on the size of instances used, so this can be scaled up or down as needed. It also does not need to be run for a full month to understand the guidance and apply it to your particular workload. This could easily be run for just a few days and to understand the potential performance and parallel tuning possibilities and then deleted.
 
 We recommend creating a Budget through AWS Cost Explorer to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
@@ -44,8 +44,8 @@ The following table provides a sample cost breakdown for deploying this Guidance
 | ----------- | ------------ | ------------ |
 | Amazon RDS for Oracle | 16.xl and 5 TB Storage | $6,017.88 |
 | Amazon Aurora PostgreSQL | 16.xl and 5 TB Storage | $7,729.01 |
-| DMS Replication Instance | 16.xl and 500 GB Storage | 5,326.11 | 
-| Amazon EC2 | m5.4xl | 523.97 | 
+| DMS Replication Instance | 16.xl and 1 TB Storage | 5,326.11 | 
+| Amazon EC2 | m5.xl | 130.75 | 
 
 ## Prerequisites 
 
@@ -206,19 +206,23 @@ ORDER BY
 FETCH FIRST 30 ROWS ONLY;
 ```
 
-16. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios
-1/ non-parallel loading a table 2/ parallel loading a partitioned table 3/ parallel loading a large table that isn't partitioned using boundary ranges and 4/ parallel loading a table with subpartitions (this is the largest table). Run the task(s) of your choice and evaluate performance. We discuss configuration settings in the next section.
+16. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios:
+| Task Name | Description |
+| ----------|-------------------------------------------|
+| dms-solution-v*-nonparallelloadtables | This task will large load tables when parallelism isn't possible due to lack of partitioning or column to act as a boundary range.
+| dms-solution-v*-parallel-load-partitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against partitioned source tables. 
+| dms-solution-v*-parallel-load-partitions-ranges | This task will load large tables leveraging boundary ranges when the table isn't partitioned.
+| dms-solution-v*-parallel-load-subpartitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against subpartitioned source tables. 
 
-17. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance.
+Run the task(s) of your choice and evaluate performance. In this guidance we have modified the **maxFileSize** and **maxFullLoadSubTasks** values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that EBS volume.
+
+17. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance. The tasks will bulk load the data into the target Aurora database. If you are interested in CDC, they are setup do that and you can execute another load of data on the source database (step 13).
 
 
 ## Next Steps (required)
 
-14. Monitor the DMS task performance in the AWS CloudWatch Console.
+18. Monitor the DMS task performance in the AWS CloudWatch Console.
 
-
-
-In this guidance we have modified the maxFileSize and maxFullLoadSubTasks values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that volume. 
 
 
 ## Cleanup (required)
@@ -229,7 +233,7 @@ Delete the Cloudformation stack will remove all resources.
 ## FAQ, known issues, additional considerations, and limitations (optional)
 
 
-**Known issues (optional)**
+**Known issues**
 
 Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cause the task to fail. 
 
