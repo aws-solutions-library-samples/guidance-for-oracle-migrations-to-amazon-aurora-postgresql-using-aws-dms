@@ -142,7 +142,7 @@ cd guidance*
 8. Connect to Oracle. Run the procedure to build the Schema and procedures.
 
 ```
-sh oracle_connect.sh
+sh /home/dms/oracle_connect.sh
 ```
 
 ```
