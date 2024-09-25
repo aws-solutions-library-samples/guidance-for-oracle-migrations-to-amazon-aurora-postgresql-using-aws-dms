@@ -133,39 +133,13 @@ source ~/.bashrc
 sh oracle_prerequisites_dms.sh
 ```
 
-```
-quit
-```
-
-7. Download Oracle tools software
-   
-```
-wget https://download.oracle.com/otn_software/linux/instantclient/2115000/instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
-```
-
-8. Install unzip
-
-```
-sudo yum install unzip -y
-```
-
-9. Unzip software
-
-```
-unzip instantclient-tools-linux.x64-21.15.0.0.0dbru.zip
-```
-
-10. Add instant client to the PATH environmment variable
-```
-export PATH=$PATH:/home/ec2-user/instantclient_21_15/
-```
-11. Change directory into the repo
+7. Change directory into the repo
 
 ```
 cd guidance*
 ```
 
-12. Connect to Oracle. Run the procedure to build the Schema and procedures.
+8. Connect to Oracle. Run the procedure to build the Schema and procedures.
 
 ```
 sh oracle_connect.sh
@@ -175,7 +149,7 @@ sh oracle_connect.sh
 @BuildAndLoadSchema.sql
 ```
 
-13. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load. The procedure will complete quickly but schedules jobs in the background with DBMS_SCHEDULER. You can check status of the jobs with the query after the anonymous block below.
+9. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load. The procedure will complete quickly but schedules jobs in the background with DBMS_SCHEDULER. You can check status of the jobs with the query after the anonymous block below.
 
 ```
 BEGIN
@@ -194,7 +168,7 @@ WHERE job_name LIKE '%LOAD%'
 and state like '%RUNNING%';
 ```
 
-14. You should now see significant load on the Oracle database (high CPU). The default settings will take a few hours to populate the tables. When finished let's see how much data we loaded. You can rerun the procedure to get your desired size dataset.
+10. You should now see significant load on the Oracle database (high CPU). The default settings will take a few hours to populate the tables. When finished let's see how much data we loaded. You can rerun the procedure to get your desired size dataset.
 
 ```
 SELECT
@@ -218,7 +192,7 @@ ORDER BY
 FETCH FIRST 30 ROWS ONLY;
 ```
 
-16. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios:
+11. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios:
     
 | Task Name | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -229,12 +203,12 @@ FETCH FIRST 30 ROWS ONLY;
 
 Run the task(s) of your choice and evaluate performance. In this guidance we have modified the **maxFileSize** and **maxFullLoadSubTasks** values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that EBS volume.
 
-17. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance. The tasks will bulk load the data into the target Aurora database. If you are interested in CDC, they are setup do that and you can execute another load of data on the source database (step 13).
+12. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance. The tasks will bulk load the data into the target Aurora database. If you are interested in CDC, they are setup do that and you can execute another load of data on the source database (step 13).
 
 
 ## Next Steps (required)
 
-18. Monitor the DMS task performance in the AWS CloudWatch Console.
+13. Monitor the DMS task performance in the AWS CloudWatch Console.
 
 
 
