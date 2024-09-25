@@ -170,7 +170,7 @@ sh oracle_connect.sh
 @BuildAndLoadSchema.sql
 ```
 
-13. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load.
+13. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load. The procedure will complete quickly but schedules jobs in the background with DBMS_SCHEDULER. You can check status of the jobs with the query after the anonymous block below.
 
 ```
 BEGIN
@@ -178,8 +178,15 @@ BEGIN
             p_num_records => 50000000,         -- Total number of records to load
             p_commit_interval => 10000         -- Number of records after which to commit
         );
-    END;
+END;
     /
+```
+
+```
+SELECT count(*)
+FROM dba_scheduler_jobs
+WHERE job_name LIKE '%LOAD%'
+and state like '%RUNNING%';
 ```
 
 14. You should now see significant load on the Oracle database (high CPU). The default settings will take a few hours to populate the tables. When finished let's see how much data we loaded. You can rerun the procedure to get your desired size dataset.
