@@ -215,6 +215,7 @@ FETCH FIRST 30 ROWS ONLY;
 ```
 
 16. Login to the DMS section of the AWS Console. Under Migration Tasks you will see 4 examples. The tasks are configured for optimal performance for each of the given scenarios:
+    
 | Task Name | Description |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | dms-solution-v*-nonparallelloadtables | This task will large load tables when parallelism isn't possible due to lack of partitioning or column to act as a boundary range. |
