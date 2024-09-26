@@ -1339,7 +1339,7 @@ Resources:
              RoleArn: !GetAtt rdss3integrationIAMRole.Arn
       OptionGroupName: !Ref RDSOracleOptionGroup
       StorageEncrypted: true
-      MaxAllocatedStorage: 5000
+      MaxAllocatedStorage: 7500
       MonitoringInterval: 1
       MonitoringRoleArn: !GetAtt EnhancedMonitoringIAMRole.Arn
       MasterUserPassword: !Sub '{{resolve:secretsmanager:${OracleSecret}::password}}'
