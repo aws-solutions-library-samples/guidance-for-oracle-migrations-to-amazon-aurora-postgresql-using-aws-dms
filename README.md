@@ -149,7 +149,7 @@ sh /home/dms/oracle_connect.sh
 @BuildAndLoadSchema.sql
 ```
 
-9. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load. The procedure will complete quickly but schedules jobs in the background with DBMS_SCHEDULER. You can check status of the jobs with the query after the anonymous block below. The default settings will take at least a few hours to load over 1TB of data. 
+9. Load some initial data while still connected to Oracle. This is configurable, more data will take longer to load. The procedure will complete quickly but schedules jobs in the background with DBMS_SCHEDULER. You can check status of the jobs with the query after the anonymous block below. The default settings will take at least a few hours to load over 1TB of data. If you want to load more data just be sure to increase the max storage size of the instance. 
 
 ```
 BEGIN
