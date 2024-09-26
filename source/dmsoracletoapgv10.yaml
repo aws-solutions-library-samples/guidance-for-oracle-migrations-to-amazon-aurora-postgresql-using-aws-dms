@@ -1349,7 +1349,7 @@ Resources:
       Description: rds-oracle-source-pg
       Family: oracle-ee-19
       Parameters:
-        job_queue_processes: 150
+        job_queue_processes: 48
 
   RDSOracleSubnetGroup:
     Type: AWS::RDS::DBSubnetGroup
