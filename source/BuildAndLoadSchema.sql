@@ -3102,7 +3102,7 @@ CREATE OR REPLACE PROCEDURE master_load_all(
     v_adjusted_employee_records NUMBER;
 BEGIN
     -- Calculate the adjusted number of records for the EMPLOYEE_NEW_DATA table
-    v_adjusted_employee_records := p_num_records * 10;
+    v_adjusted_employee_records := p_num_records * 6;
 
     -- Call the master procedure to load all other tables except EMPLOYEE_NEW_DATA
     master_parallel_load_multi_thread(
