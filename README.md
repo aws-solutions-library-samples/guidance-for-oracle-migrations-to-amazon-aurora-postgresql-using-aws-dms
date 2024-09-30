@@ -208,9 +208,8 @@ FETCH FIRST 30 ROWS ONLY;
 | dms-solution-v*-parallel-load-partitions-ranges | This task will load large tables leveraging boundary ranges when the table isn't partitioned. |
 | dms-solution-v*-parallel-load-subpartitions-auto | This task will load large tables leveraging built in DMS parallelism capabilities against subpartitioned source tables. |
 
-Run the task(s) of your choice and evaluate performance. In this guidance we have modified the **maxFileSize** and **maxFullLoadSubTasks** values to take advantage of the resources of the relatively large instances sizes we are using. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that EBS volume.
 
-12. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance. The tasks will bulk load the data into the target Aurora database. If you are interested in CDC, they are setup do that and you can execute another load of data on the source database (step 13).
+12. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance. The tasks will bulk load the data into the target Aurora database. If you are interested in CDC, the tasks  are setup for that and you can execute another load of data on the source database after the full load is complete(step 9). In this guidance we have modified the **maxFileSize** and **maxFullLoadSubTasks** values to take advantage of the resources of the relatively large instances sizes we are using. Using more resources in parallel improves the full load of this database from **days to a few hours**. These values can be further tuned for your specific workload, and to put more or less stress on the source database. Instance sizes can also be reduced or increased. If lowering the instance class of the DMS replication instance we recommend leaving the 1TB of storage for more IOPS and throughput of that EBS volume.
 
 
 ## Next Steps
