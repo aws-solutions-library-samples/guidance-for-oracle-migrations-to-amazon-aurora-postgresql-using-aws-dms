@@ -87,7 +87,7 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
     For this guidance, we will be using the us-west-2 region.
     Sign in to the AWS CloudFormation console.
    
-    Click Create Stack and upload the oracletoaurorapgv*.yml file.
+    Click Create Stack and upload the oracletoaurorapgv13.yml file.
    
     Deploy the stack after entering dms-solution in the stack name.
         The parameters can be changed as desired but the solution has been tested and verified with the defaults.
@@ -110,12 +110,17 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
 cd /home/dms
 ```
 
+3. Install git
+
+```
+sudo yum install git -y
+```
+
 3. Clone the repo to the bastion host. We are using a Bastion to increase security since the database resides in a private VPC.
    
 ```
 git clone https://github.com/aws-solutions-library-samples/guidance-for-large-data-migrations-from-oracle-to-amazon-aurora-postgresql
 ```
-
 
 4. Configure the environment
 
