@@ -98,7 +98,7 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
    ![Validation Example](./assets/images/validation.png)
 
 
-## Running the Guidance (required)
+## Running the Guidance
 
 1. Login to the EC2 instance using Systems Manager (EC2 page -> Connect -> SSM)
    
@@ -206,23 +206,22 @@ Run the task(s) of your choice and evaluate performance. In this guidance we hav
 12. Choose one of the DMS tasks and run it. Multiple tasks could run in parallel but will affect performance. The tasks will bulk load the data into the target Aurora database. If you are interested in CDC, they are setup do that and you can execute another load of data on the source database (step 13).
 
 
-## Next Steps (required)
+## Next Steps
 
 13. Monitor the DMS task performance in the AWS CloudWatch Console.
 
 
 
-## Cleanup (required)
+## Cleanup
 
-Delete the Cloudformation stack will remove all resources. 
+Delete the Cloudformation stack will remove all resources. You may have to remove snapshots taken while the solution was running in order to delete the option group, as the snapshots will be associated with this option group.
 
-
-## FAQ, known issues, additional considerations, and limitations (optional)
+## FAQ, known issues, additional considerations, and limitations
 
 
 **Known issues**
 
-Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cause the task to fail. 
+Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cause the task to fail. It is recommended to use a lower number of SubTasks (the default is 32).
 
 
 ## Notices
