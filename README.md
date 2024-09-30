@@ -214,9 +214,9 @@ FETCH FIRST 30 ROWS ONLY;
 
 ## Next Steps
 
-13. Monitor the DMS task performance in the AWS CloudWatch Console.
+13. Monitor the DMS task performance in the AWS CloudWatch Console. The tasks can be run over and over again as shown. The data will be dropped on the target and recreated everytime. 
 
-
+![Task Example](./assets/images/DMS_Task_Ex.png)
 
 ## Cleanup
 
