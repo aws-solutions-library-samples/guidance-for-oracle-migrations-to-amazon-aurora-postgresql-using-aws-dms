@@ -91,8 +91,10 @@ git clone https://github.com/aws-solutions-library-samples/guidance-for-large-da
    
     Deploy the stack after entering dms-solution in the stack name.
         The parameters can be changed as desired but the solution has been tested and verified with the defaults.
+
+## Deployment Validation
    
-4. Open CloudFormation console and verify the status of the template with the name starting with dms-solution*.
+1. Open CloudFormation console and verify the status of the template with the name starting with dms-solution*.
    You should also see an Oracle and Aurora PostgreSQL database under the RDS section of the management console.
 
    ![Validation Example](./assets/images/validation.png)
