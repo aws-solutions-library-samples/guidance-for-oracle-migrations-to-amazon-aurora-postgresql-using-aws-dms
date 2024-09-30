@@ -1,4 +1,4 @@
-≠# Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS 
+## Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS 
 
 ## Table of Contents
 
