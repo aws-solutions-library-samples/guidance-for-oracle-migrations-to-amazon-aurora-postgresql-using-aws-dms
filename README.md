@@ -34,9 +34,9 @@ You are responsible for the cost of the AWS services used while running this Gui
 
 As of 09/09/2024, the cost for running this guidance with the default settings in the US-West-2 (Oregon) is approximately $19,596.97 per month.
 
-The cloudformation template takes inputs on the size of instances used, so this can be scaled up or down as needed. It also does not need to be run for a full month to understand the guidance and apply it to your particular workload. This could easily be run for just a few days and to understand the potential performance and parallel tuning possibilities and then deleted.
+The cloudformation template takes inputs on the size of instances used, so this can be scaled up or down as needed. It also does not need to be run for a full month to understand the guidance and apply it to your particular workload. This could easily be run for just a few days and to understand the potential performance and parallel tuning possibilities and then deleted. After you spin this up, you can lwoer the instance sizes when you aren't using it. 
 
-We recommend creating a Budget through AWS Cost Explorer to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
+We recommend creating a Budget and *budget alarm* through AWS Cost Explorer to help manage costs. Prices are subject to change. For full details, refer to the pricing webpage for each AWS service used in this Guidance.
 
 The following table provides a sample cost breakdown for deploying this Guidance with the default parameters in the US-West-2 (Oregon) Region for one month.
 
