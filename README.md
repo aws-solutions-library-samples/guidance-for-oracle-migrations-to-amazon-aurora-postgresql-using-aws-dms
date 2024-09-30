@@ -227,7 +227,7 @@ Delete the Cloudformation stack will remove all resources. You may have to remov
 
 **Known issues**
 
-Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cause the task to fail. It is recommended to use a lower number of SubTasks (the default is 32). If you see this error: SQLite general error, Error: 'database is locked'> then try lowering the number of maxFullLoadSubTasks.
+Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cause the task to fail. It is recommended to use a lower number of SubTasks (the default is 32). In CloudWatch Logs for DMS - If you see this error: SQLite general error, Error: 'database is locked'> then try lowering the number of maxFullLoadSubTasks.
 
 
 ## Notices
