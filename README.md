@@ -16,10 +16,10 @@ List the top-level sections of the README template, along with a hyperlink to th
 
 ***Optional***
 
-8. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations-optional)
-9. [Revisions](#revisions-optional)
-10. [Notices](#notices-optional)
-11. [Authors](#authors-optional)
+8. [FAQ, known issues, additional considerations, and limitations](#faq-known-issues-additional-considerations-and-limitations)
+9. [Revisions](#revisions)
+10. [Notices](#notices)
+11. [Authors](#authors)
 
 ## Overview
 
@@ -49,11 +49,11 @@ The following table provides a sample cost breakdown for deploying this Guidance
 
 ## Prerequisites 
 
-- Access to deploy Cloudformation template and create resources (Amazon EC2, Aurora PostgreSQL, RDS Oracle, VPC, Subnets, Security groups, IAM roles and Policies)
+- Access to deploy Cloudformation template and create resources (Amazon EC2, Aurora PostgreSQL, RDS Oracle, VPC, Subnets, Security groups, IAM roles and Policies). The solution leverages RDS Oracle with the BYOL option.  Customers are responsible for owning the appropriate amount of Oracle licenses. 
 
 ### Operating System 
 
-- These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>** but might work on any linux or Mac environment with little modification.
+- These deployment instructions are optimized to best work on **<Amazon Linux 2023 AMI>**, which is what the bastion host is running. 
 
 
 ### AWS account requirements 
