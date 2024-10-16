@@ -237,4 +237,8 @@ Using maxFullLoadSubTasks value of 49 can lead to a race condition which may cau
 
 ## Authors 
 
-Name of code contributors
+Ryan Shevchik
+Gowri Balasubramanian
+Alex Anto KJ
+Suchindranath Hedge
+Prabu Ayyakkannu
