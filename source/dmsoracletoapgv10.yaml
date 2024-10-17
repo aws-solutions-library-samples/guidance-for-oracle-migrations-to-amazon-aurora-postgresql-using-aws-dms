@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: "Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS(SO9541)"
+Description: "Guidance for Oracle Migrations to Amazon Aurora PostgreSQL using AWS DMS(SO9541) - Cloudformation template for DMS"
 
 Parameters:
   VPCCIDR:
